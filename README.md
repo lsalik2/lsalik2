@@ -18,19 +18,20 @@ projects live in private repos, so [lsalik.dev](https://lsalik.dev) is where i w
 
 ### $ ls -l ~/projects
 
+<!-- each hyphen in the mode strings is followed by a word joiner (U+2060), so they never wrap -->
 | mode | name | description | stack |
 | --- | --- | --- | --- |
-| `drwxr-xr-x` | [lsalik.dev](https://github.com/lsalik2/lsalik.dev) | terminal-inspired personal website, complete with a blog | Astro, TypeScript |
-| `-rwxr-xr-x` | [Flipper Animation Switcher](https://github.com/lsalik2/flipper-animation-switcher) | a Flipper Zero app for creating, managing and switching background animations | C |
-| `drwxr-xr-x` | [BashCraft](https://github.com/lsalik2/bashcraft) | brings bash to Minecraft commands: chains, pipes, variables, aliases and timers | Java, Fabric |
-| `drwx------` | [Finch](https://lsalik.dev/projects/finch) | a media player for the couch, built for the Steam Deck and Steam Big Picture | Rust, Slint |
-| `drwx------` | [Glyphling](https://lsalik.dev/projects/glyphling) | a procedurally generated ASCII pet that lives in your terminal | Python, Textual |
-| `drwx------` | [Synergy](https://lsalik.dev/projects/synergy) | a combat-focused magic mod for Minecraft | Java, Fabric |
-| `drwx------` | [SLKARDS](https://lsalik.dev/projects/slkards) | a Discord trading card game: trades, battles, marketplaces and alliances | Python, discord.py |
-| `drwx------` | [vsync](https://lsalik.dev/projects/vsync) | two-way sync between a folder in an Obsidian vault and a repo's `docs/` | Python |
-| `drwx------` | [Devil's Bayou](https://lsalik.dev/projects/devils-bayou) | a 2D RPG drawn in ASCII art; more to share once it's further along | Godot, GDScript |
+| `drwxr-⁠xr-⁠x` | [lsalik.dev](https://github.com/lsalik2/lsalik.dev) | terminal-inspired personal website, complete with a blog | Astro, TypeScript |
+| `-⁠rwxr-⁠xr-⁠x` | [Flipper Animation Switcher](https://github.com/lsalik2/flipper-animation-switcher) | a Flipper Zero app for creating, managing and switching background animations | C |
+| `drwxr-⁠xr-⁠x` | [BashCraft](https://github.com/lsalik2/bashcraft) | brings bash to Minecraft commands: chains, pipes, variables, aliases and timers | Java, Fabric |
+| `drwx-⁠-⁠-⁠-⁠-⁠-⁠` | [Finch](https://lsalik.dev/projects/finch) | a media player for the couch, built for the Steam Deck and Steam Big Picture | Rust, Slint |
+| `drwx-⁠-⁠-⁠-⁠-⁠-⁠` | [Glyphling](https://lsalik.dev/projects/glyphling) | a procedurally generated ASCII pet that lives in your terminal | Python, Textual |
+| `drwx-⁠-⁠-⁠-⁠-⁠-⁠` | [Synergy](https://lsalik.dev/projects/synergy) | a combat-focused magic mod for Minecraft | Java, Fabric |
+| `drwx-⁠-⁠-⁠-⁠-⁠-⁠` | [SLKARDS](https://lsalik.dev/projects/slkards) | a Discord trading card game: trades, battles, marketplaces and alliances | Python, discord.py |
+| `drwx-⁠-⁠-⁠-⁠-⁠-⁠` | [vsync](https://lsalik.dev/projects/vsync) | two-way sync between a folder in an Obsidian vault and a repo's `docs/` | Python |
+| `drwx-⁠-⁠-⁠-⁠-⁠-⁠` | [Devil's Bayou](https://lsalik.dev/projects/devils-bayou) | a 2D RPG drawn in ASCII art; more to share once it's further along | Godot, GDScript |
 
-`drwx------` projects are private, so their links go to their page on lsalik.dev.
+`drwx-⁠-⁠-⁠-⁠-⁠-⁠` projects are private, so their links go to their page on lsalik.dev.
 
 ### $ tail ~/blog
 
