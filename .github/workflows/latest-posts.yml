@@ -1,0 +1,23 @@
+name: latest posts
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: node --test
+      - run: node scripts/latest-posts.mjs
+      - name: commit if the list changed
+        run: |
+          git config user.name 'SLK'
+          git config user.email '67078872+lsalik2@users.noreply.github.com'
+          git add README.md
+          git diff --cached --quiet || { git commit -m 'chore: refresh latest posts' && git push; }
