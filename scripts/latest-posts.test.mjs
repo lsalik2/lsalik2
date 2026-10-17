@@ -29,11 +29,11 @@ test('parseFeed finds nothing in the terminal text view', () => {
   assert.deepEqual(parseFeed('┌ ~/blog ──┐\n│ BashCraft │'), []);
 });
 
-test('renderPosts lists the five newest, newest first, with ls-style dates', () => {
+test('renderPosts lists the three newest, newest first, as dated links', () => {
   const posts = [1, 2, 3, 4, 5, 6].map((n) => post(n, `2026-0${n}-0${n}T00:00:00Z`));
   assert.equal(
     renderPosts(posts),
-    [6, 5, 4, 3, 2].map((n) => `- [post ${n}](https://lsalik.dev/blog/${n}/) · ${['', 'jan', 'feb', 'mar', 'apr', 'may', 'jun'][n]} ${n} 2026`).join('\n'),
+    [6, 5, 4].map((n) => `2026-0${n}-0${n}  <a href="https://lsalik.dev/blog/${n}/">post ${n}</a>`).join('\n'),
   );
 });
 
@@ -42,9 +42,12 @@ test('renderPosts keeps feed order for posts on the same day', () => {
   assert.match(renderPosts(posts), /post a[^]*post b/);
 });
 
-test('renderPosts escapes square brackets in titles', () => {
-  const posts = [{ ...post(1, '2026-10-14T00:00:00Z'), title: '[draft] notes' }];
-  assert.equal(renderPosts(posts), '- [\\[draft\\] notes](https://lsalik.dev/blog/1/) · oct 14 2026');
+test('renderPosts escapes HTML in titles and links', () => {
+  const posts = [{ title: 'Tom & <Jerry>', link: 'https://lsalik.dev/blog/?a=1&b="2"', date: new Date('2026-10-14T00:00:00Z') }];
+  assert.equal(
+    renderPosts(posts),
+    '2026-10-14  <a href="https://lsalik.dev/blog/?a=1&amp;b=&quot;2&quot;">Tom &amp; &lt;Jerry&gt;</a>',
+  );
 });
 
 test('replaceSection swaps only the text between the markers, and is stable', () => {

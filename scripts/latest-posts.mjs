@@ -6,10 +6,10 @@ import { pathToFileURL } from 'node:url';
 export const FEED_URL = 'https://lsalik.dev/rss.xml';
 export const START = '<!-- latest-posts:start -->';
 export const END = '<!-- latest-posts:end -->';
-const COUNT = 5;
+const COUNT = 3;
 const README = new URL('../README.md', import.meta.url);
-const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 const ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
+const ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' };
 
 function decodeXml(text) {
   return text.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (match, name) => {
@@ -34,15 +34,16 @@ export function parseFeed(xml) {
     .filter((post) => post.title && post.link && !Number.isNaN(post.date.getTime()));
 }
 
-function formatDate(date) {
-  return `${MONTHS[date.getUTCMonth()]} ${date.getUTCDate()} ${date.getUTCFullYear()}`;
+function escapeHtml(text) {
+  return text.replace(/[&<>"]/g, (char) => ESCAPES[char]);
 }
 
+// One line per post inside the README's <pre> block, so plain HTML, not markdown.
 export function renderPosts(posts) {
   return [...posts]
     .sort((a, b) => b.date - a.date)
     .slice(0, COUNT)
-    .map((post) => `- [${post.title.replace(/[[\]]/g, '\\$&')}](${post.link}) · ${formatDate(post.date)}`)
+    .map((post) => `${post.date.toISOString().slice(0, 10)}  <a href="${escapeHtml(post.link)}">${escapeHtml(post.title)}</a>`)
     .join('\n');
 }
 
